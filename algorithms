@@ -1,0 +1,289 @@
+
+function RunLength(str) {
+  var obj = {};
+  
+  for (var i=0; i < str.length; i++) {
+    if (obj[str[i]] == undefined) {
+      obj[str[i]] = 1;
+    } else {
+      obj[str[i]] = parseInt(obj[str[i]]) + 1
+    }
+  }
+  var ret = '';
+  for (j in obj) {
+    ret += (obj[j] + j)
+  }
+
+  // code goes here  
+  return ret; 
+         
+}
+  
+// keep this function call here 
+// to see how to enter arguments in JavaScript scroll down
+RunLength('mouses');   
+
+function PrimeMover(num) { 
+  var ctr = 0;
+  var itr = 2;
+  
+  while(ctr <= num) {
+    if (isPrime(itr)) {
+      ctr++;
+      if (ctr === num) {break}
+    }
+    itr++;
+  }
+  // code goes here  
+  return itr;
+}
+
+
+function stripSpecialChars(str) {
+  str = str.toLowerCase();
+  var strRet = '';
+  for (var i = 0; i < str.length; i++) {
+    var cc = str.charCodeAt(i);
+    if ((cc >= 65 && cc <= 90) || (cc >= 97 && cc <= 122)) {
+      strRet += str[i]
+    }
+  }
+  return strRet
+}
+
+
+function isPrime(n) {
+  var ret;
+  if (n < 0) {
+    ret = false;
+  } else if (n >= 1 && n <= 3) {
+    ret = true;
+  } else {
+    var idx = 2;
+    ret = true;
+    while (idx < n) {
+      if (parseInt(n % idx) === 0) {
+        ret = false;
+        break;
+      }
+      idx++;
+    }
+  }
+  return ret
+}
+
+
+var a = "azAZ";
+console.log(a.charCodeAt(0))
+console.log(a.charCodeAt(1))
+console.log(a.charCodeAt(2))
+console.log(a.charCodeAt(3))
+
+
+function findDivisors(n) {
+  var divs = [];
+  if (n === 1) {
+    divs = [1]
+  } else if (n === 2) {
+    divs = [1,2]
+  } else {
+    for (var i = 1; i < n -1; i++ ) {
+      if (parseInt(n % i) === 0) {
+        divs.push(i)
+      }
+    }
+  }
+  return divs
+}
+
+findDivisors(20)
+
+
+function intersection(div1, div2) {
+  var commons = [];
+  var dLen1 = div1.length;
+  var dLen2 = div2.length;
+  
+  for (var i = 0; i < dLen1; i++) {
+    for (var j = 1; j < dLen2; j++) {
+      if (div1[i] === div2[j]) {
+        commons.push[div1[i]]
+      }
+    }    
+  }
+  
+  return commons;
+
+}
+
+
+function permutations(list)
+{
+	// Empty list has one permutation
+	if (list.length == 0)
+		return [[]];
+		
+	var result = [];
+  
+	for (var i=0; i<list.length; i++)
+	{
+		// Clone list (kind of)
+    
+		var copy = Object.create(list);
+		console.log('copy |' + copy)
+		// Cut one element from list
+		var head = copy.splice(i, 1);
+		console.log('head |' + head)
+		// Permute rest of list
+		var rest = permutations(copy);
+		console.log('rest |' + rest)
+		// Add head to each permutation of rest of list
+		for (var j=0; j<rest.length; j++)
+		{
+                        console.log('rest[j] |' + rest[j]);
+			var next = head.concat(rest[j]);
+                        console.log('next inside |' + next)
+			result.push(next);
+		}
+	}
+	
+	return result;
+}
+
+var pl = [1,2,3]
+
+permutations(pl)
+
+
+function ArithGeo(arr) { 
+  var diff = arr[1] - arr[0];
+  var div = arr[1] / arr[0];
+  var aStatus = true;
+  var gStatus = true;
+  
+  for (var i = 2; i < arr.length; i++) {
+    if (((arr[i] - arr[i - 1]) !== diff) && aStatus) {
+      aStatus = false;
+    }
+    if (((arr[i] / arr[i - 1]) !== div) && gStatus) {
+      gStatus = false;
+    }
+  }
+  
+  if (aStatus) {
+    return "Arithmetic";  
+  } else if (gStatus) {
+    return "Geometric";
+  } else {
+    return -1;
+  }
+        
+}
+
+function FasterLoops() {
+  l = 10;
+  for(i = l; i--;) { // even better and efficient 
+    console.log(i)   // starts with 9 and goes to 0
+  }
+
+  l = 10;
+  l = l - 1;
+  do {               // this is slightly less efficent.
+    console.log(l)   // starts with 10 and goes to 0
+  } while(l--);
+
+
+  l = 10
+  while(l--) {       // as good as the for loop
+    console.log(l)   // starts with 9 and goes to 0
+  }
+}
+
+
+function permuter() {
+var source = [1,2,3,4,5];
+var dest = {};
+var sl = source.length;
+
+dest["a" + 1] = [source[0]];
+/*
+dest["a" + 2] = [];
+for (var i = 1; i < sl; i += 1) {
+  dest["a" + 2].push(dest["a" + 1].concat(source[i]))
+}
+
+dest["a" + 3] = [];
+for (var i = 2; i < sl; i += 1) {
+  dest["a" + 3].push(dest["a" + 2][0].concat(source[i]))
+}
+
+dest["a" + 4] = [];
+for (var i = 3; i < sl; i += 1) {
+  dest["a" + 4].push(dest["a" + 3][0].concat(source[i]))
+}
+*/
+
+
+
+function sorter(n, source) {
+  dest["a" + n] = [];
+  var nm1 = n - 1;
+  if (n === 1) {
+    return source;
+  } else {
+    for (var i = nm1; i < sl; i += 1) {
+      if (n === 2) {
+        dest["a" + n].push(dest["a" + nm1].concat(source[i]))
+      } else {
+        dest["a" + n].push(dest["a" + nm1][0].concat(source[i]))
+      }
+    }
+  }  
+    
+}
+
+for (var i = 1; i < 5; i++){
+  sorter(i, source)
+}
+
+
+console.log(dest.a2)
+console.log(dest.a3)
+console.log(dest.a4)
+}
+
+
+
+var delayGreeting = function(name, ms) {
+  var fn = function() {
+    setTimeout(function() {
+      console.log("Hi " + name)
+    }, ms)
+  }
+  return fn
+};
+
+var dgFn = delayGreeting("Manoj", 2000);
+
+dgFn();
+
+
+var fn = function() {
+  console.log(fn.fnum)
+}
+fn();
+fn.fnum = 12;
+
+function BinaryConverter(str) { 
+  var len = str.length;
+  var dec = 0;
+  var ctr = len - 1;
+  
+  for (var i = 0; i < len; i++) {
+    dec = dec + (parseInt(str[i]) * Math.pow(2 , ctr))
+    ctr--;  
+  }
+  return dec; 
+}
+
+BinaryConverter("100101")
